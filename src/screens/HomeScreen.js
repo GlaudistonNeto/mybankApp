@@ -3,8 +3,20 @@ import styled from 'styled-components';
 import { FontAwesome5, MaterialIcons, AntDesign } from '@expo/vector-icons';
 
 import Text from '../components/Text';
+import purchaseData from '../../purchases';
 
 export default HomeScreen = () => {
+  const renderPurchase = ({ item }) => (
+    <Purchase>
+      <PurchaseInfo>
+        <Text>{item.product}</Text>
+        <Text>{item.store}</Text>
+        <Text>{item.address}</Text>
+      </PurchaseInfo>
+      <Text>{item.price}</Text>
+    </Purchase>
+  );
+
   return (
     <Container>
       <Header>
@@ -51,6 +63,9 @@ export default HomeScreen = () => {
               </SearchContainer>
           </>
         }
+        data={purchaseData}
+        renderItem={renderPurchase}
+        showsVerticalScrollIndicator={false}
       />
 
       <StatusBar barstyle="light-content" />
@@ -104,6 +119,14 @@ const Search = styled.TextInput`
   flex: 1;
   padding: 8px 16px;
   color: #dbdbdb;
+`;
+
+const Purchase = styled.View`
+  
+`;
+
+const PurchaseInfo = styled.View`
+  
 `;
 
 const StatusBar = styled.StatusBar`
