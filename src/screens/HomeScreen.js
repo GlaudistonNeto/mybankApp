@@ -66,6 +66,8 @@ export default HomeScreen = () => {
           }}
           width={Dimensions.get('window').width}
           height={250}
+          yAxisLabel="$"
+          yAxisSuffix="k"
           chartConfig={{
             backgroundGradientFrom: "#1e1e1e",
             backgroundGradientTo: "#1e1e1e",
@@ -73,6 +75,9 @@ export default HomeScreen = () => {
             labelColor: () => `rgba(255, 255, 255, 0.2)`,
             strokeWidth: 3,
           }}
+          withVerticalLines={false}
+          withHorizontalLines={false}
+          bezier
         />
       </Chart>
 
