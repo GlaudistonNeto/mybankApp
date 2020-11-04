@@ -1,6 +1,12 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
-import { FontAwesome5, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import {
+  FontAwesome5,
+  MaterialIcons,
+  AntDesign
+} from '@expo/vector-icons';
+import { LineChart } from 'react-native-chart-kit';
 
 import Text from '../components/Text';
 import purchaseData from '../../purchases';
@@ -9,11 +15,11 @@ export default HomeScreen = () => {
   const renderPurchase = ({ item }) => (
     <Purchase>
       <PurchaseInfo>
-        <Text>{item.product}</Text>
-        <Text>{item.store}</Text>
-        <Text>{item.address}</Text>
+        <Text heavy>{item.product}</Text>
+        <Text bold margin="2px 0 2px 0">{item.store}</Text>
+        <Text small color="#727479">{item.address}</Text>
       </PurchaseInfo>
-      <Text>{item.price}</Text>
+      <Text heavy>{item.price}</Text>
     </Purchase>
   );
 
@@ -40,6 +46,35 @@ export default HomeScreen = () => {
       <Text center heavy color="#727479">
         Current Balance
       </Text>
+
+      <Chart>
+        <LineChart
+          data={{
+            label: ["May", "June", "July", "Aug", "Sept", "Oct"],
+            datasets: [
+              {
+                data: [
+                  Math.random() * 10,
+                  Math.random() * 10,
+                  Math.random() * 10,
+                  Math.random() * 10,
+                  Math.random() * 10,
+                  Math.random() * 10
+                ],
+              },
+            ],
+          }}
+          width={Dimensions.get('window').width}
+          height={250}
+          chartConfig={{
+            backgroundGradientFrom: "#1e1e1e",
+            backgroundGradientTo: "#1e1e1e",
+            color: (opacity = 1) => `rgba(81, 150, 244, ${opacity})`,
+            labelColor: () => `rgba(255, 255, 255, 0.2)`,
+            strokeWidth: 3,
+          }}
+        />
+      </Chart>
 
       <Purchases
         ListHeaderComponent={
@@ -95,6 +130,10 @@ const Welcome = styled.View`
   padding: 16px;
 `;
 
+const Chart = styled.View`
+  margin: 32px 0;
+`;
+
 const Purchases = styled.FlatList`
   background-color: #2c2c2c;
   padding: 16px;
@@ -122,7 +161,12 @@ const Search = styled.TextInput`
 `;
 
 const Purchase = styled.View`
-  
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  border-bottom-color: #393939;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
 `;
 
 const PurchaseInfo = styled.View`
