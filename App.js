@@ -53,13 +53,13 @@ export default function App() {
         screenOptions={screenOptions}
       >
         <TabStack.Screen
-          name="Home"
-          component={HomeScreen}
-        />
-        <TabStack.Screen
           name="SendRequest"
           component={SendRequestScreen}
           options={{ title: "Send & Request" }}
+        />
+        <TabStack.Screen
+          name="Home"
+          component={HomeScreen}
         />
         <TabStack.Screen
           name="Cards"
