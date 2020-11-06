@@ -53,13 +53,13 @@ export default function App() {
         screenOptions={screenOptions}
       >
         <TabStack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        <TabStack.Screen
           name="SendRequest"
           component={SendRequestScreen}
           options={{ title: "Send & Request" }}
-        />
-        <TabStack.Screen
-          name="Home"
-          component={HomeScreen}
         />
         <TabStack.Screen
           name="Cards"
@@ -73,9 +73,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator headerMode="none">
-        <AppStack.Screen name="Tabs" component={TabsStackScreens} />
         <AppStack.Screen name="Touch" component={TouchScreen} />
         <AppStack.Screen name="Pin" component={PinScreen} />
+        <AppStack.Screen name="Tabs" component={TabsStackScreens} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
